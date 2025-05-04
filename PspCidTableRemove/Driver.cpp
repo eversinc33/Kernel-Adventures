@@ -327,10 +327,10 @@ RemoveEntryFromPspCidTable(
 	HANDLE handle
 )
 {
-	auto cidEntry = g_ExpLookupHandleTableEntry(*(PHANDLE_TABLE*)g_KdBlock->PspCidTable, handle);
+	auto cidEntry = g_ExpLookupHandleTableEntry((PHANDLE_TABLE)g_KdBlock->PspCidTable, handle);
 	if (cidEntry != NULL)
 	{
-		g_ExDestroyHandle(*(PHANDLE_TABLE*)g_KdBlock->PspCidTable, handle, cidEntry);
+		g_ExDestroyHandle((PHANDLE_TABLE)g_KdBlock->PspCidTable, handle, cidEntry);
 		return STATUS_SUCCESS;
 	}
 	return STATUS_NOT_FOUND;
